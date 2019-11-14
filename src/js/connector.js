@@ -6,7 +6,7 @@ var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4b
 window.TrelloPowerUp.initialize({
     'card-back-section': function(t, options){
       return {
-        title: 'My Card Back Section',    
+        title: 'Custom fields',    
         icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.    
         content: {
             type: 'iframe',
