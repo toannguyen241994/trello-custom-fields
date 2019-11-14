@@ -1,0 +1,15 @@
+{
+  "name": "custom-field",
+  "version": "1.0.0",
+  "description": "A customize of custom-field power-up trello",
+  "main": "index.js",
+  "repository": "https://github.com/toanduong-bbv/trello-custom-fields.git",
+  "author": "toanduong <toanduong@bbv.ch>",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build src/html/*.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
