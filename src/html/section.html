@@ -13,7 +13,8 @@
                 var result = JSON.parse(e[0].value);
                 var html = '';
                 console.log(result);
-                $.each(result, function(i, item){       
+                $.each(result, function(i, item){    
+                    console.log('item');   
                     console.log(item);
                     var customfield = item[0];
                     if(customfield.name != null) {
