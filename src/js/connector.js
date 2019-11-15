@@ -10,9 +10,10 @@ window.TrelloPowerUp.initialize(
                 .then(function (data) {
                     $.each(data, function(i, card) {
                         var desc = card.desc;
-                        console.log(card.id);
+                        
                         var regex = new RegExp(/§FIELDS=.*§/ms);
                         if (desc.indexOf('§FIELDS=') > -1) {
+                            console.log(card.id);
                             var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
                             console.log(value);
                             var customFields = JSON.parse(value);
