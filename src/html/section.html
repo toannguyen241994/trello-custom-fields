@@ -14,7 +14,8 @@
                 var html = '';
                 console.log(result);
                 $.each(result, function(i, item){       
-                    var customfield = item[i];
+                    console.log(item);
+                    var customfield = item[0];
                     if(customfield.name != null) {
                         html += '<div style="width: 200px; float:left">';
                         html += '<label>' + customfield.name + '</label><br/>';
