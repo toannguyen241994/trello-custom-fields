@@ -10,11 +10,12 @@ window.TrelloPowerUp.initialize(
                 icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
                 text: 'Add custom field',
                 callback: function(t){
-                    var customFields = {
+                    var customFields = [{
+                        id: Math.floor((Math.random() * 10) + 1),
                         name: "KKF", 
                         type: "list", 
                         options: [{ name: "item 1" }]
-                    }
+                    }];
                     return t.set(options.context.card, 'shared', '1', customFields)
                             .then(function(){
                                 console.log('create custom filed');

@@ -1,16 +1,37 @@
 <div class="custom-fields">
 
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous">
-
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script>
-        $( document ).ready(function(){
+    $( document ).ready(function(){
         console.log('call api');
         $.ajax({
             url: 'https://api.trello.com/1/cards/5dcba7e8bbb07f39480137d2/pluginData?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
             success: function(e) {
-                console.log(e);
+                var result = JSON.parse(e[0].value);
+                console.log(result);
+                console.log(result["1"]);
+                var html = '';
+                $.each(result["1"], function(i, customfield){
+                    html += '<div style="width: 200px; float:left">';
+                    html += '<label>' + customfield.name + '</label>';
+                    switch(customfield.type) {
+                        case "list":
+                        html += "<select id='" + customfield.id + "'>";
+                        $.each(customfield.options, function(j, option){
+                            html += '<option>' + option.name + '</option>';
+                        });
+                        html += "</select>";
+                        break;
+                        case "checkbox":
+                        break;
+                        default:
+                        break;
+                    }
+                    html += '</div>';
+                });
+
+                $('.custom-fields').append(html);
             }
         })
     });
