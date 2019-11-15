@@ -2,92 +2,93 @@
 <html>
   <head>
     <meta charset="utf-8"> 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
+    <style>
+            .u-gutter {
+                margin-left: 40px;
+            }
+    
+            .u-clearfix:after {
+                clear: both;
+                content: "";
+                display: table;
+            }
+    
+            .list-detail-badge {
+                min-width: 36px;
+                position: relative;
+            }
+    
+            .list-detail-badge-value {
+                display: flex;
+                justify-content: space-between;
+            }
+    
+            .custom-field-detail-badge {
+                background-color: rgba(9,30,66,.04);
+                box-shadow: none;
+                border: none;
+                border-radius: 3px;
+                display: block;
+                height: 20px;
+                line-height: 20px;
+                max-width: 100%;
+                overflow: hidden;
+                padding: 6px 12px;
+                text-decoration: none;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                transition-property: background-color,border-color,box-shadow;
+                transition-duration: 85ms;
+                transition-timing-function: ease;
+            }
+    
+            .list-detail-badge select {
+                border: none;
+                cursor: pointer;
+                height: 32px;
+                left: 0;
+                margin: 0;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                z-index: 2;
+                width: 100%;
+            }
+    
+            select {
+                max-height: 300px;
+                width: 256px;
+                margin-bottom: 8px;
+            }
+    
+            .card-detail-item-header {
+                color: #5e6c84;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: .04em;
+                line-height: 16px;
+                margin-top: 16px;
+                text-transform: uppercase;
+                display: block;
+                line-height: 20px;
+                margin: 0 8px 4px 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+    
+            option {
+                font-weight: normal;
+                display: block;
+                white-space: pre;
+                min-height: 1.2em;
+                padding: 0px 2px 1px;
+            }
+        </style>
   </head>
   <body>
-    <style>
-        .u-gutter {
-    margin-left: 40px;
-}
-
-.u-clearfix:after {
-    clear: both;
-    content: "";
-    display: table;
-}
-
-.list-detail-badge {
-    min-width: 36px;
-    position: relative;
-}
-
-.list-detail-badge-value {
-    display: flex;
-    justify-content: space-between;
-}
-
-.custom-field-detail-badge {
-    background-color: rgba(9,30,66,.04);
-    box-shadow: none;
-    border: none;
-    border-radius: 3px;
-    display: block;
-    height: 20px;
-    line-height: 20px;
-    max-width: 100%;
-    overflow: hidden;
-    padding: 6px 12px;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    transition-property: background-color,border-color,box-shadow;
-    transition-duration: 85ms;
-    transition-timing-function: ease;
-}
-
-.list-detail-badge select {
-    border: none;
-    cursor: pointer;
-    height: 32px;
-    left: 0;
-    margin: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-}
-
-select {
-    max-height: 300px;
-    width: 256px;
-    margin-bottom: 8px;
-}
-
-.card-detail-item-header {
-    color: #5e6c84;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .04em;
-    line-height: 16px;
-    margin-top: 16px;
-    text-transform: uppercase;
-    display: block;
-    line-height: 20px;
-    margin: 0 8px 4px 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-option {
-    font-weight: normal;
-    display: block;
-    white-space: pre;
-    min-height: 1.2em;
-    padding: 0px 2px 1px;
-}
-    </style>
+    
     <script src="https://p.trellocdn.com/power-up.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="../js/connector.js"></script>

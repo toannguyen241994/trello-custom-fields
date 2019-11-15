@@ -6,16 +6,17 @@ var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4b
 window.TrelloPowerUp.initialize({
     'card-back-section': function(t, options){
         var technology = "FIBER";
-        $.ajax({
-            method: "GET",
-            url: "https://umbrellatooltest.intern.upc.ch/Connector/GetCustomFields",
-            data: {
-                technology: technology
-            },
-            success: function (e) {
-                console.log(e);
-            }
-        });
+        console.log(options);
+        // $.ajax({
+        //     method: "GET",
+        //     url: "https://umbrellatooltest.intern.upc.ch/Connector/GetCustomFields",
+        //     data: {
+        //         technology: technology
+        //     },
+        //     success: function (e) {
+        //         console.log(e);
+        //     }
+        // });
       return {
         title: 'Custom fields',    
         icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.    
