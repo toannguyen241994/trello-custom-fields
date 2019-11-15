@@ -12,9 +12,9 @@ window.TrelloPowerUp.initialize(
                     console.log(JSON.stringify(data, null, 2));
                     var desc = data.desc;
 
-                    var regex = new RegExp('\§FIELDS=.*\§');
+                    var regex = new RegExp(/§FIELDS=.*§/ms);
                     if (regex.test(desc)) {
-                        console.log('asdasd');
+                        console.log(desc.replace('§FIELDS', '').replace('§', ''));
                     }
                 });
         },
