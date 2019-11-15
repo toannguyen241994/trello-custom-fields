@@ -13,6 +13,7 @@ window.TrelloPowerUp.initialize(
                         var regex = new RegExp(/§FIELDS=.*§/ms);
                         if (regex.test(desc)) {
                             var value = desc.replace('§FIELDS=', '').replace('§', '');
+                            console.log(value);
                             var customFields = JSON.parse(value);
                             console.log(customFields);
                             return t.set(card.id, 'shared', card.id, customFields)
