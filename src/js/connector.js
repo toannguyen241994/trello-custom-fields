@@ -10,10 +10,10 @@ window.TrelloPowerUp.initialize(
                 icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
                 text: 'Add custom field',
                 callback: function(t){
-                    return t.popup({
-                      title: "Add Custom Field",
-                      url: 'customfield.html'
-                    });
+                    return t.set(options.context.card, 'shared', '1', '{ name: "KKF", type: "list", options: [{ name: "item 1" }] }')
+                            .then(function(){
+                                console.log('create custom filed');
+                            });
                   }
             }];
         },
