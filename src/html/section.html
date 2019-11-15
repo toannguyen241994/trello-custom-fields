@@ -1,8 +1,9 @@
 <div class="custom-fields">
 
-</div>>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous">
     $( document ).ready(function(){
+        console.log('call api');
         $.ajax({
             url: 'https://api.trello.com/1/cards/5dcba7e8bbb07f39480137d2/pluginData?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
             success: function(e) {
