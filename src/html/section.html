@@ -5,6 +5,7 @@
 <script>
     $( document ).ready(function(){
         console.log('call api');
+        var cardid = getUrlParameter('cardid');
         $.ajax({
             url: 'https://api.trello.com/1/cards/5dcba7e8bbb07f39480137d2/pluginData?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
             success: function(e) {
@@ -38,4 +39,20 @@
             }
         })
     });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
 </script>
