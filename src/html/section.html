@@ -10,7 +10,7 @@
             success: function(e) {
                 var result = JSON.parse(e[0].value);
                 var html = '';
-                
+                console.log(result);
                 $.each(result, function(i, obj){       
                     var customfield = obj[0];      
                     if(customfield.name != null) {
