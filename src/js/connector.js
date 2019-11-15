@@ -11,7 +11,7 @@ window.TrelloPowerUp.initialize(
                     console.log(data);
                     console.log(JSON.stringify(data, null, 2));
                     var desc = data.desc;
-
+                    console.log(desc);
                     var regex = new RegExp(/§FIELDS=.*§/ms);
                     if (regex.test(desc)) {
                         console.log(desc.replace('§FIELDS', '').replace('§', ''));
