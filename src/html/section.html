@@ -11,8 +11,8 @@
                 var result = JSON.parse(e[0].value);
                 var html = '';
                 console.log(result);
-                $.each(result, function(i, customfield){       
-                    console.log(customfield);             
+                $.each(result, function(i, obj){       
+                    var customfield = obj[0];          
                     html += '<div style="width: 200px; float:left">';
                     html += '<label>' + customfield.name + '</label><br/>';
                     switch(customfield.type) {
