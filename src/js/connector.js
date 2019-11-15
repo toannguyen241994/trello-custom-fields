@@ -6,10 +6,16 @@ var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4b
 window.TrelloPowerUp.initialize(
     {
         'board-buttons': function (t, opts) {
-            return t.cards('all')
+            return t.cards('id', 'desc')
                 .then(function (data) {
                     console.log(data);
                     console.log(JSON.stringify(data, null, 2));
+                    var desc = data.desc;
+
+                    var regex = new RegExp('\§FIELDS=.*\§');
+                    if (regex.test(desc)) {
+                        console.log('asdasd');
+                    }
                 });
         },
         'card-buttons': function(t, options) {
