@@ -7,9 +7,8 @@ window.TrelloPowerUp.initialize({
     'card-back-section': function(t, options){
         var technology = "FIBER";
         $.ajax({
-            method: "POST",
+            method: "GET",
             url: "http://umbrellatooltest.intern.upc.ch/Connector/GetCustomFields",
-            async: false,
             data: {
                 technology: technology
             },
