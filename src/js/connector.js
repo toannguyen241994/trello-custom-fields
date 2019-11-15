@@ -6,7 +6,7 @@ var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4b
 window.TrelloPowerUp.initialize(
     {
         'board-buttons': function (t, opts) {
-            return t.getAll()
+            return t.cards('all')
                 .then(function (data) {
                     console.log(data);
                     console.log(JSON.stringify(data, null, 2));
