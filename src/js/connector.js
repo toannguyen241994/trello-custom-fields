@@ -8,7 +8,7 @@ window.TrelloPowerUp.initialize({
         var technology = "FIBER";
         $.ajax({
             method: "GET",
-            url: "http://umbrellatooltest.intern.upc.ch/Connector/GetCustomFields",
+            url: "https://umbrellatooltest.intern.upc.ch/Connector/GetCustomFields",
             data: {
                 technology: technology
             },
