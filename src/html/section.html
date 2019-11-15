@@ -10,25 +10,28 @@
             success: function(e) {
                 var result = JSON.parse(e[0].value);
                 var html = '';
-                console.log(result);
+                
                 $.each(result, function(i, obj){       
-                    var customfield = obj[0];          
-                    html += '<div style="width: 200px; float:left">';
-                    html += '<label>' + customfield.name + '</label><br/>';
-                    switch(customfield.type) {
-                        case "list":
-                        html += "<select id='" + customfield.id + "'>";
-                        $.each(customfield.options, function(j, option){
-                            html += '<option>' + option.name + '</option>';
-                        });
-                        html += "</select>";
-                        break;
-                        case "checkbox":
-                        break;
-                        default:
-                        break;
-                    }
-                    html += '</div>';
+                    var customfield = obj[0];      
+                    if(customfield.name != null) {
+                        html += '<div style="width: 200px; float:left">';
+                        html += '<label>' + customfield.name + '</label><br/>';
+                        switch(customfield.type) {
+                            case "list":
+                                html += "<select id='" + customfield.id + "'>";
+                                $.each(customfield.options, function(j, option){
+                                    html += '<option>' + option.name + '</option>';
+                                });
+                                html += "</select>";
+                                break;
+                            case "checkbox":
+                                break;
+                            default:
+                                break;
+                        }
+                        html += '</div>';
+                    }    
+                    
                 });
 
                 $('.custom-fields').append(html);
