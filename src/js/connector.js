@@ -8,14 +8,17 @@ window.TrelloPowerUp.initialize(
         'board-buttons': function (t, opts) {
             return t.cards('id', 'desc')
                 .then(function (data) {
-                    console.log(data);
-                    console.log(JSON.stringify(data, null, 2));
                     $.each(data, function(i, card) {
                         var desc = card.desc;
-                        console.log(desc);
                         var regex = new RegExp(/§FIELDS=.*§/ms);
                         if (regex.test(desc)) {
-                            console.log(desc.replace('§FIELDS', '').replace('§', ''));
+                            var value = desc.replace('§FIELDS=', '').replace('§', '');
+                            var customFields = JSON.parse(value);
+                            console.log(customFields);
+                            return t.set(card.id, 'shared', card.id, customFields)
+                                .then(function(){
+                                    console.log('create custom filed');
+                                });
                         }
                     });
                     
