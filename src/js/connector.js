@@ -12,7 +12,7 @@ window.TrelloPowerUp.initialize(
                 callback: function(t){
                     return t.popup({
                       title: "Add Custom Field",
-                      url: '../html/customfield.html'
+                      url: 'customfield.html'
                     });
                   }
             }];
