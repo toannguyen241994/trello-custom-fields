@@ -5,8 +5,10 @@ var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4b
 
 window.TrelloPowerUp.initialize({
     'card-back-section': function(t, options){
+        console.log('card id:' + options.context.card);
         return t.set(options.context.card, 'shared', '123456789', '123456789')
                 .then(function(){
+                    console.log('create success');
                     //call api to get card information in trello app
                     $.ajax({
                         url: 'https://api.trello.com/1/cards/' + options.context.card + '?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
