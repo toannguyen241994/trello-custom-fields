@@ -16,7 +16,7 @@ window.TrelloPowerUp.initialize(
                         type: "list", 
                         options: [{ name: "item 1" }]
                     }];
-                    return t.set(options.context.card, 'shared', '1', customFields)
+                    return t.set(options.context.card, 'shared', Math.floor((Math.random() * 10) + 1), customFields)
                             .then(function(){
                                 console.log('create custom filed');
                             });

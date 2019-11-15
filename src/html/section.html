@@ -9,12 +9,10 @@
             url: 'https://api.trello.com/1/cards/5dcba7e8bbb07f39480137d2/pluginData?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
             success: function(e) {
                 var result = JSON.parse(e[0].value);
-                console.log(result);
-                console.log(result["1"]);
                 var html = '';
                 $.each(result["1"], function(i, customfield){
                     html += '<div style="width: 200px; float:left">';
-                    html += '<label>' + customfield.name + '</label>';
+                    html += '<label>' + customfield.name + '</label><br/>';
                     switch(customfield.type) {
                         case "list":
                         html += "<select id='" + customfield.id + "'>";
