@@ -4,11 +4,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script>
     $( document ).ready(function(){
-        console.log(window.location);
         var cardid = getUrlParameter('cardid');
-        console.log(cardid);
+        var key = getUrlParameter('key');
+        var token = getUrlParameter('token');
         $.ajax({
-            url: 'https://api.trello.com/1/cards/' + cardid + '/pluginData?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
+            url: 'https://api.trello.com/1/cards/' + cardid + '/pluginData?key=' + key + '&token=' + token,
             success: function(e) {
                 var result = JSON.parse(e[0].value);
                 var html = '';
@@ -18,19 +18,20 @@
                         if(customfield.name != null) {
                             html += '<div style="width: 200px; float:left; margin: 5px;">';
                             html += '<label>' + customfield.name + '</label><br/>';
+                            html += '<span class="detail-badge-value" id="sp' + customfield.id + '">noch nicht definiert</span>';
                             switch(customfield.type) {
                                 case "list":
-                                    html += "<select style='width: 100%' id='" + customfield.id + "'>";
+                                    html += "<select style='width: 100%' id='" + customfield.id + "' onchange='changeValue()'>";
                                     $.each(customfield.options, function(j, option){
-                                        html += '<option>' + option.value + '</option>';
+                                        html += '<option value="' + option.id + '">' + option.value + '</option>';
                                     });
                                     html += "</select>";
                                     break;
                                 case "check":
-                                    html += "<input id='" + customfield.id + "' type='checkbox' />";
+                                    html += "<input id='" + customfield.id + "' type='checkbox' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
                                     break;
                                 default:
-                                    html += "<input id='" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.lenngth > 0 ? customfield.options[0].value : "") + "'/>";
+                                    html += "<input id='" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
                                     break;
                             }
                             html += '</div>';
@@ -46,18 +47,26 @@
     });
 
     var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
         }
+    };
+
+    var changeValue = function changeValue() {
+        var value = $(this).val();
+        var id = $(this).attr("id");
+
+        console.log(value + '-' + id);
+        $('#sp' + id).val(value);
     }
-};
 
 </script>

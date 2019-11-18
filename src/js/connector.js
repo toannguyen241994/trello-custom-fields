@@ -2,6 +2,7 @@
 console.log('Check card-back-section');
 
 var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
+var KEYTOKEN = 'key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b';
 
 window.TrelloPowerUp.initialize(
     {
@@ -16,7 +17,7 @@ window.TrelloPowerUp.initialize(
                             var customFields = JSON.parse(value);
                             return t.set(card.id, 'shared', card.id, customFields)
                                 .then(function(){
-                                    console.log('create custom filed');
+                                    console.log('create custom field');
                                 });
                         }
                     });
@@ -48,7 +49,7 @@ window.TrelloPowerUp.initialize(
             icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.    
             content: {
                 type: 'iframe',
-                url: t.signUrl('./section.html?cardid=' + options.context.card),
+                url: t.signUrl('./section.html?cardid=' + options.context.card + '&' + KEYTOKEN),
                 height: 230 // Max height is 500
               }
           };
