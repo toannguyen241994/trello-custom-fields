@@ -205,7 +205,6 @@
                 fields = result[cardid];
                 $.each(result[cardid], function(i, customfield){    
                     var html = '';
-                    console.log(selectedValue[customfield.id]);
                     if(customfield.name != null) {
                         html += '<div class="custom-field-detail-item">';
                         html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-sm icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
@@ -261,6 +260,14 @@
                                 switch(field.type) {
                                     case 'list':
                                         selectValue = $('#cus' + field.id).val();
+                                        if(field.id == customfield.id) {
+                                            if($(this).parent().hasClass('field-color')) {
+                                                var lastClass = $('#cus' + field.id).attr('class').split(' ').pop();
+                                                (this).removeClass(lastClass).addClass('field-color-' + field.color);
+                                            } else if(selectValue != 'Select...'){
+                                                (this).addClass('field-color').addClass('field-color-' + field.color);
+                                            }
+                                        }
                                         break;
                                     case 'check':
                                         selectValue = $('#cus' + field.id).is(':checked');
