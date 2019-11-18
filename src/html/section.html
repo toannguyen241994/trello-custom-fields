@@ -11,17 +11,18 @@
             url: 'https://api.trello.com/1/cards/' + cardid + '/pluginData?key=' + key + '&token=' + token,
             success: function(e) {
                 var result = JSON.parse(e[0].value);
-                var html = '';
 
                 $.each(result, function(i, customfields){    
-                    $.each(customfields, function(j, customfield){    
+                    $.each(customfields, function(j, customfield){  
+                        var html = '';
+                          
                         if(customfield.name != null) {
                             html += '<div style="width: 200px; float:left; margin: 5px;">';
                             html += '<label>' + customfield.name + '</label><br/>';
                             html += '<span class="detail-badge-value" id="sp' + customfield.id + '">noch nicht definiert</span>';
                             switch(customfield.type) {
                                 case "list":
-                                    html += "<select style='width: 100%' id='" + customfield.id + "' onchange='changeValue('" + customfield.id + "')'>";
+                                    html += "<select style='width: 100%' id='" + customfield.id + "'>";
                                     $.each(customfield.options, function(j, option){
                                         html += '<option value="' + option.id + '">' + option.value + '</option>';
                                     });
@@ -35,6 +36,16 @@
                                     break;
                             }
                             html += '</div>';
+
+                            $('.custom-fields').append(html);
+
+                            $('#' + customfield.id).on('change', function(){
+                                var value = $(this).val();
+                                var id =  $(this).attr("id");
+
+                                console.log(value + '-' + id);
+                                $('#sp' + id).val(value);
+                            });
                         }    
                     });
                     
