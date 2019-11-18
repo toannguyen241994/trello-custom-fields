@@ -186,6 +186,7 @@
                 console.log(result[cardid]);
                 $.each(result[cardid], function(i, customfields){    
                     fields = customfields;
+                    console.log(customfields);
                     $.each(customfields, function(j, customfield){  
                         var html = '';
                         console.log(selectedValue[customfield.id]);
