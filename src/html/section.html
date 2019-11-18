@@ -7,10 +7,6 @@
         font-weight: 400;
     }
 
-    .custom-field{
-        width: 200px; float:left; margin: 5px;
-    }
-
     .u-gutter {
         margin-left: 40px;
     }
@@ -129,7 +125,7 @@
                             
                             switch(customfield.type) {
                                 case "list":
-                                    html += "<select class='js-custom-field-list' id=cus'" + customfield.id + "'>";
+                                    html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
                                     $.each(customfield.options, function(j, option){
                                         html += '<option value="' + option.id + '">' + option.value + '</option>';
                                     });
