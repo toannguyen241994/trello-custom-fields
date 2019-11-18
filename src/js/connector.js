@@ -19,7 +19,7 @@ window.TrelloPowerUp.initialize(
                                 .then(function(){
                                     desc = desc.substring(0, desc.indexOf('§FIELDS='));
                                     $.ajax({
-                                        url: 'https://api.trello.com/1/cards/' + card.id + '?key=' + key + '&token=' + token,
+                                        url: 'https://api.trello.com/1/cards/' + card.id + '?' + KEYTOKEN,
                                         type: 'PUT',
                                         data: {
                                             desc: desc
