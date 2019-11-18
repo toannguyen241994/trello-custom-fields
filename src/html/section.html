@@ -12,12 +12,9 @@
             success: function(e) {
                 var result = JSON.parse(e[0].value);
                 var html = '';
-                console.log(result);
+
                 $.each(result, function(i, customfields){    
-                    console.log('item');   
-                    
                     $.each(customfields, function(j, customfield){    
-                        console.log(customfield);
                         if(customfield.name != null) {
                             html += '<div style="width: 200px; float:left">';
                             html += '<label>' + customfield.name + '</label><br/>';
@@ -30,8 +27,10 @@
                                     html += "</select>";
                                     break;
                                 case "checkbox":
+                                    html += "<input id='" + customfield.id + "' type='checkbox' />";
                                     break;
                                 default:
+                                    html += "<input id='" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.lenngth > 0 ? customfield.options[0].value : "") + "'/>";
                                     break;
                             }
                             html += '</div>';
