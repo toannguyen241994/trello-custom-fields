@@ -22,7 +22,7 @@
                                 case "list":
                                     html += "<select style='width: 100%' id='" + customfield.id + "'>";
                                     $.each(customfield.options, function(j, option){
-                                        html += '<option>' + option.name + '</option>';
+                                        html += '<option>' + option.value + '</option>';
                                     });
                                     html += "</select>";
                                     break;

@@ -11,13 +11,9 @@ window.TrelloPowerUp.initialize(
                     $.each(data, function(i, card) {
                         var desc = card.desc;
                         
-                        var regex = new RegExp(/§FIELDS=.*§/ms);
                         if (desc.indexOf('§FIELDS=') > -1) {
-                            console.log(card.id);
                             var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
-                            console.log(value);
                             var customFields = JSON.parse(value);
-                            console.log(customFields);
                             return t.set(card.id, 'shared', card.id, customFields)
                                 .then(function(){
                                     console.log('create custom filed');
@@ -46,33 +42,7 @@ window.TrelloPowerUp.initialize(
             }];
         },
         'card-back-section': function(t, options){
-            console.log('card id:' + options.context.card);
-            // $.ajax({
-            //     method: 'POST',
-            //     url: 'https://api.trello.com/1/customFields?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
-            //     data: {
-            //         'idModel': options.context.board,
-            //         'modelType': 'board',
-            //         'name': 'test',
-            //         'type': 'checkbox',
-            //         'pos': 1,
-            //         'display_cardFront': true
-            //     },
-            //     success: function(e) {
-            //         console.log(e);
-            //     }
-            // });
-            // return t.set(options.context.card, 'shared', '123456789', '123456789')
-            //         .then(function(){
-            //             console.log('create success');
-            //             //call api to get card information in trello app
-            //             $.ajax({
-            //                 url: 'https://api.trello.com/1/cards/' + options.context.card + '?key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b',
-            //                 success: function(e) {
-            //                     console.log(e);
-            //                 }
-            //             });
-            //         });
+            console.log(options);
           return {
             title: 'Custom fields',    
             icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.    
