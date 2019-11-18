@@ -201,7 +201,7 @@
                                     break;
                                 case "check":
                                     //html += '<span class="custom-field-detail-badge custom-field-detail-checkbox-badge js-custom-field-detail-badge is-clickable"><span class="custom-field-detail-badge-checkbox-box"><span class="icon-sm icon-check custom-field-detail-badge-checkbox-icon"></span></span></span>';
-                                    html += "<input id='cus" + customfield.id + "' type='checkbox' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
+                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
                                     break;
                                 default:
                                     html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";

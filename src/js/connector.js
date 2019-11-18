@@ -17,7 +17,17 @@ window.TrelloPowerUp.initialize(
                             var customFields = JSON.parse(value);
                             return t.set(card.id, 'shared', card.id, customFields)
                                 .then(function(){
-                                    console.log('create custom field');
+                                    desc = desc.substring(0, desc.indexOf('§FIELDS='));
+                                    $.ajax({
+                                        url: 'https://api.trello.com/1/cards/' + card.id + '?key=' + key + '&token=' + token,
+                                        type: 'PUT',
+                                        data: {
+                                            desc: desc
+                                        },
+                                        success: function(e){
+                                            console.log(e);
+                                        }
+                                    });
                                 });
                         }
                     });
