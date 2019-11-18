@@ -21,7 +21,7 @@
                             html += '<span class="detail-badge-value" id="sp' + customfield.id + '">noch nicht definiert</span>';
                             switch(customfield.type) {
                                 case "list":
-                                    html += "<select style='width: 100%' id='" + customfield.id + "' onchange='changeValue()'>";
+                                    html += "<select style='width: 100%' id='" + customfield.id + "' onchange='javascript:changeValue()'>";
                                     $.each(customfield.options, function(j, option){
                                         html += '<option value="' + option.id + '">' + option.value + '</option>';
                                     });
@@ -61,7 +61,7 @@
         }
     };
 
-    var changeValue = function changeValue() {
+    function changeValue() {
         var value = $(this).val();
         var id = $(this).attr("id");
 
