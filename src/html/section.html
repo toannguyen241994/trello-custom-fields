@@ -261,11 +261,11 @@
                                     case 'list':
                                         selectValue = $('#cus' + field.id).val();
                                         if(field.id == customfield.id) {
-                                            if($(this).parent().hasClass('field-color')) {
+                                            if($('#cus' + field.id).parent().hasClass('field-color')) {
                                                 var lastClass = $('#cus' + field.id).attr('class').split(' ').pop();
-                                                (this).removeClass(lastClass).addClass('field-color-' + field.color);
+                                                $('#cus' + field.id).removeClass(lastClass).addClass('field-color-' + field.color);
                                             } else if(selectValue != 'Select...'){
-                                                (this).addClass('field-color').addClass('field-color-' + field.color);
+                                                $('#cus' + field.id).addClass('field-color').addClass('field-color-' + field.color);
                                             }
                                         }
                                         break;
