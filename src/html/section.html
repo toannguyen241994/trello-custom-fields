@@ -1,3 +1,8 @@
+<style>
+    .custom-field{
+        width: 200px; float:left; margin: 5px;
+    }
+</style>
 <div class="custom-fields">
 
 </div>
@@ -17,22 +22,22 @@
                         var html = '';
                           
                         if(customfield.name != null) {
-                            html += '<div style="width: 200px; float:left; margin: 5px;">';
+                            html += '<div class="custom-field">';
                             html += '<label>' + customfield.name + '</label><br/>';
                             html += '<span class="detail-badge-value" id="sp' + customfield.id + '">noch nicht definiert</span>';
                             switch(customfield.type) {
                                 case "list":
-                                    html += "<select style='width: 100%' id='" + customfield.id + "'>";
+                                    html += "<select style='width: 100%' id=cus'" + customfield.id + "'>";
                                     $.each(customfield.options, function(j, option){
                                         html += '<option value="' + option.id + '">' + option.value + '</option>';
                                     });
                                     html += "</select>";
                                     break;
                                 case "check":
-                                    html += "<input id='" + customfield.id + "' type='checkbox' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
+                                    html += "<input id='cus" + customfield.id + "' type='checkbox' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
                                     break;
                                 default:
-                                    html += "<input id='" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
+                                    html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
                                     break;
                             }
                             html += '</div>';
@@ -42,17 +47,16 @@
                             $('#' + customfield.id).on('change', function(){
                                 var value = $(this).val();
                                 var id =  $(this).attr("id");
+                                var text = $(this).children('option:selected').text();
 
                                 console.log(value + '-' + id);
-                                $('#sp' + id).val(value);
+                                $('#sp' + id).text(text);
                             });
                         }    
                     });
                     
                     
                 });
-
-                $('.custom-fields').append(html);
 
             }
         })
@@ -72,13 +76,4 @@
             }
         }
     };
-
-    function changeValue(id) {
-        var value = $('#' + id).val();
-        var id =  $('#' + id).attr("id");
-
-        console.log(value + '-' + id);
-        $('#sp' + id).val(value);
-    }
-
 </script>
