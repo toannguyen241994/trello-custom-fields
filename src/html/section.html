@@ -16,17 +16,17 @@
                 $.each(result, function(i, customfields){    
                     $.each(customfields, function(j, customfield){    
                         if(customfield.name != null) {
-                            html += '<div style="width: 200px; float:left">';
+                            html += '<div style="width: 200px; float:left; margin: 5px;">';
                             html += '<label>' + customfield.name + '</label><br/>';
                             switch(customfield.type) {
                                 case "list":
-                                    html += "<select id='" + customfield.id + "'>";
+                                    html += "<select style='width: 100%' id='" + customfield.id + "'>";
                                     $.each(customfield.options, function(j, option){
                                         html += '<option>' + option.name + '</option>';
                                     });
                                     html += "</select>";
                                     break;
-                                case "checkbox":
+                                case "check":
                                     html += "<input id='" + customfield.id + "' type='checkbox' />";
                                     break;
                                 default:
