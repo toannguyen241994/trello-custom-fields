@@ -197,8 +197,8 @@
                                 html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
                                 html += '<option value="">Select...</option>';
                                 $.each(customfield.options, function(j, option){
-                                    console.log(selectedValue[customfield.id][option.id]);
-                                    if(option.id == selectedValue[customfield.id][option.id]) {
+                                    console.log(selectedValue[customfield.id]);
+                                    if(option.id == selectedValue[customfield.id]) {
                                         console.log(option.value);
                                         html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
                                         html = html.replace('-Select</span>', option.value + '</span>');
