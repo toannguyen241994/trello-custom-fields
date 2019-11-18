@@ -181,12 +181,13 @@
             url: 'https://api.trello.com/1/cards/' + cardid + '/pluginData?key=' + key + '&token=' + token,
             success: function(e) {
                 var result = JSON.parse(e[cardid].value);
-                
+                var selectedValue = e[customfield.id + '-selected'];
+                console.log(selectedValue);
                 $.each(result, function(i, customfields){    
                     fields = customfields;
                     $.each(customfields, function(j, customfield){  
                         var html = '';
-                          
+                        console.log(selectedValue[customfield.id]);
                         if(customfield.name != null) {
                             html += '<div class="custom-field-detail-item">';
                             html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-sm icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
@@ -199,7 +200,7 @@
                                     html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
                                     html += '<option value="">Select...</option>';
                                     $.each(customfield.options, function(j, option){
-                                        if(option.id == e[cardid][customfield.id][option.id]) {
+                                        if(option.id == selectedValue[customfield.id][option.id]) {
                                             html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
                                             html = html.replace('-Select</span>', option.value + '</span>');
                                         } else {
@@ -210,15 +211,15 @@
                                     break;
                                 case "check":
                                     //html += '<span class="custom-field-detail-badge custom-field-detail-checkbox-badge js-custom-field-detail-badge is-clickable"><span class="custom-field-detail-badge-checkbox-box"><span class="icon-sm icon-check custom-field-detail-badge-checkbox-icon"></span></span></span>';
-                                    if(e[cardid][customfield.id]) {
+                                    if(selectedValue[customfield.id]) {
                                         html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
                                     } else {
                                         html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
                                     }
                                     break;
                                 default:
-                                    if(e[cardid][customfield.id] != "") {
-                                        html += "<input id='cus" + customfield.id + "' type='text' value='" + e[cardid][customfield.id] + "'/>";    
+                                    if(selectedValue[customfield.id] != "") {
+                                        html += "<input id='cus" + customfield.id + "' type='text' value='" + selectedValue[customfield.id] + "'/>";    
                                     } else {
                                         html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
                                     }
