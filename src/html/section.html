@@ -180,12 +180,10 @@
         $.ajax({
             url: 'https://api.trello.com/1/cards/' + cardid + '/pluginData?key=' + key + '&token=' + token,
             success: function(e) {
-                console.log(e);
                 var result = JSON.parse(e[0].value);
-                console.log(result);
-                var selectedValue = result[customfield.id + '-selected'];
+                var selectedValue = result[cardid + '-selected'];
                 console.log(selectedValue);
-                $.each(result, function(i, customfields){    
+                $.each(result[cardid], function(i, customfields){    
                     fields = customfields;
                     $.each(customfields, function(j, customfield){  
                         var html = '';
