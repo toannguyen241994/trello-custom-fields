@@ -183,6 +183,7 @@
                 var result = JSON.parse(e[0].value);
                 var selectedValue = result[cardid + '-selected'];
                 console.log(selectedValue);
+                console.log(result[cardid]);
                 $.each(result[cardid], function(i, customfields){    
                     fields = customfields;
                     $.each(customfields, function(j, customfield){  
