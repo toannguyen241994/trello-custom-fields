@@ -182,87 +182,81 @@
             success: function(e) {
                 var result = JSON.parse(e[0].value);
                 var selectedValue = result[cardid + '-selected'];
-                console.log(selectedValue);
-                console.log(result[cardid]);
-                $.each(result[cardid], function(i, customfields){    
-                    fields = customfields;
-                    console.log(customfields);
-                    $.each(customfields, function(j, customfield){  
-                        var html = '';
-                        console.log(selectedValue[customfield.id]);
-                        if(customfield.name != null) {
-                            html += '<div class="custom-field-detail-item">';
-                            html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-sm icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
-                            
-                            
-                            switch(customfield.type) {
-                                case "list":
-                                    html += '<div class="list-detail-badge custom-field-detail-badge is-clickable js-custom-field-detail-badge" title="">';
-                                    html += '<span class="list-detail-badge-value js-custom-field-list-value" id="sp' + customfield.id + '">-Select</span><label>' + customfield.name + '</label>';
-                                    html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
-                                    html += '<option value="">Select...</option>';
-                                    $.each(customfield.options, function(j, option){
-                                        if(option.id == selectedValue[customfield.id][option.id]) {
-                                            html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
-                                            html = html.replace('-Select</span>', option.value + '</span>');
-                                        } else {
-                                            html += '<option value="' + option.id + '">' + option.value + '</option>';
-                                        }
-                                    });
-                                    html += "</select>";
-                                    break;
-                                case "check":
-                                    //html += '<span class="custom-field-detail-badge custom-field-detail-checkbox-badge js-custom-field-detail-badge is-clickable"><span class="custom-field-detail-badge-checkbox-box"><span class="icon-sm icon-check custom-field-detail-badge-checkbox-icon"></span></span></span>';
-                                    if(selectedValue[customfield.id]) {
-                                        html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
+                fields = result[cardid];
+                $.each(result[cardid], function(i, customfield){    
+                    var html = '';
+                    console.log(selectedValue[customfield.id]);
+                    if(customfield.name != null) {
+                        html += '<div class="custom-field-detail-item">';
+                        html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-sm icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
+                        
+                        switch(customfield.type) {
+                            case "list":
+                                html += '<div class="list-detail-badge custom-field-detail-badge is-clickable js-custom-field-detail-badge" title="">';
+                                html += '<span class="list-detail-badge-value js-custom-field-list-value" id="sp' + customfield.id + '">-Select</span><label>' + customfield.name + '</label>';
+                                html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
+                                html += '<option value="">Select...</option>';
+                                $.each(customfield.options, function(j, option){
+                                    if(option.id == selectedValue[customfield.id][option.id]) {
+                                        html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
+                                        html = html.replace('-Select</span>', option.value + '</span>');
                                     } else {
-                                        html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
+                                        html += '<option value="' + option.id + '">' + option.value + '</option>';
                                     }
-                                    break;
-                                default:
-                                    if(selectedValue[customfield.id] != "") {
-                                        html += "<input id='cus" + customfield.id + "' type='text' value='" + selectedValue[customfield.id] + "'/>";    
-                                    } else {
-                                        html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
-                                    }
-                                    
-                                    break;
-                            }
-                            html += '</div></div>';
-
-                            $('.custom-field-detail-badges-grid').append(html);
-
-                            $('#cus' + customfield.id).on('change', function(){
-                                var value = $(this).val();
-                                var id =  $(this).attr("id");
-                                var text = $(this).children('option:selected').text();
-                                
-                                $('#sp' + customfield.id).text(text);
-
-                                var values = {};
-                                $.each(fields, function(idx, field){
-                                    var selectValue = '';
-                                    switch(field.type) {
-                                        case 'list':
-                                            selectValue = $('#cus' + field.id).val();
-                                            break;
-                                        case 'check':
-                                            selectValue = $('#cus' + field.id).is(':checked');
-                                            break;
-                                        default:
-                                            selectValue = $('#cus' + field.id).val();
-                                            break;
-                                    }
-                                    
-                                    values[field.id] = selectValue;
                                 });
-
-                                console.log(values);
+                                html += "</select>";
+                                break;
+                            case "check":
+                                //html += '<span class="custom-field-detail-badge custom-field-detail-checkbox-badge js-custom-field-detail-badge is-clickable"><span class="custom-field-detail-badge-checkbox-box"><span class="icon-sm icon-check custom-field-detail-badge-checkbox-icon"></span></span></span>';
+                                if(selectedValue[customfield.id]) {
+                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
+                                } else {
+                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
+                                }
+                                break;
+                            default:
+                                if(selectedValue[customfield.id] != "") {
+                                    html += "<input id='cus" + customfield.id + "' type='text' value='" + selectedValue[customfield.id] + "'/>";    
+                                } else {
+                                    html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
+                                }
                                 
-                                return t.set('card', 'shared', cardid + '-selected', values);
+                                break;
+                        }
+                        html += '</div></div>';
+
+                        $('.custom-field-detail-badges-grid').append(html);
+
+                        $('#cus' + customfield.id).on('change', function(){
+                            var value = $(this).val();
+                            var id =  $(this).attr("id");
+                            var text = $(this).children('option:selected').text();
+                            
+                            $('#sp' + customfield.id).text(text);
+
+                            var values = {};
+                            $.each(fields, function(idx, field){
+                                var selectValue = '';
+                                switch(field.type) {
+                                    case 'list':
+                                        selectValue = $('#cus' + field.id).val();
+                                        break;
+                                    case 'check':
+                                        selectValue = $('#cus' + field.id).is(':checked');
+                                        break;
+                                    default:
+                                        selectValue = $('#cus' + field.id).val();
+                                        break;
+                                }
+                                
+                                values[field.id] = selectValue;
                             });
-                        }    
-                    });
+
+                            console.log(values);
+                            
+                            return t.set('card', 'shared', cardid + '-selected', values);
+                        });
+                    }    
                 });
             }
         });
