@@ -170,6 +170,8 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
 <script>
+    var t = window.TrelloPowerUp.iframe();
+    var fields = [];
     $( document ).ready(function(){
         var cardid = getUrlParameter('cardid');
         var key = getUrlParameter('key');
@@ -178,8 +180,9 @@
             url: 'https://api.trello.com/1/cards/' + cardid + '/pluginData?key=' + key + '&token=' + token,
             success: function(e) {
                 var result = JSON.parse(e[0].value);
-
+                
                 $.each(result, function(i, customfields){    
+                    fields = customfields;
                     $.each(customfields, function(j, customfield){  
                         var html = '';
                           
@@ -215,9 +218,27 @@
                                 var value = $(this).val();
                                 var id =  $(this).attr("id");
                                 var text = $(this).children('option:selected').text();
+                                var values = {};
+                                $.each(fields, function(idx, field){
+                                    var selectValue = '';
+                                    switch(field.type) {
+                                        case 'list':
+                                            selectValue = $('#cus' + field.id).val();
+                                            break;
+                                        case 'check':
+                                            selectValue = $('#cus' + field.id).is(':checked');
+                                            break;
+                                        default:
+                                            selectValue = $('#cus' + field.id).val();
+                                            break;
+                                    }
+                                    
+                                    values[field.id] = selectValue;
+                                });
 
-                                console.log(value + '-' + id);
-                                $('#sp' + customfield.id).text(text);
+                                console.log(values);
+                                
+                                return t.set('card', 'shared', cardid + '-selected', values);
                             });
                         }    
                     });
