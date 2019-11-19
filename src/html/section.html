@@ -261,11 +261,18 @@
                                     case 'list':
                                         selectValue = $('#cus' + field.id).val();
                                         if(field.id == customfieldid) {
+                                            var opt = {};
+                                            $.each(field.options, function(i, item){
+                                                if(item.id == value) {
+                                                    opt = item;
+                                                    return false;
+                                                }
+                                            });
                                             var lastClass = $('#cus' + field.id).parent().attr('class').split(' ').pop();
                                             if($('#cus' + field.id).parent().hasClass('field-color')) {
-                                                $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + field.color);
+                                                $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + opt.color);
                                             } else if(selectValue != 'Select...'){
-                                                $('#cus' + field.id).parent().addClass('field-color').addClass('field-color-' + field.color);
+                                                $('#cus' + field.id).parent().addClass('field-color').addClass('field-color-' + opt.color);
                                             } else {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).removeClass('field-color');
                                             }
