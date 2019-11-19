@@ -39,7 +39,9 @@ window.TrelloPowerUp.initialize(
                 .then(function(data) {
                 
                 if(data != null) {
+                    console.log(data);
                     var result = JSON.parse(data[0].value);
+                    console.log(result);
                     var selectedValue = result[opts.context.card + '-selected'];
                     var customFields = result[opts.context.card];
                     var values = [];
