@@ -6,13 +6,6 @@ var KEYTOKEN = 'key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9d
 
 window.TrelloPowerUp.initialize(
     {
-        'card-buttons': function(t, options){
-            console.log('card-buttons');
-            return [{
-              icon: 'https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421',
-              text: 'Estimate Size',
-            }];
-          },
         'board-buttons': function (t, opts) {
             console.log('board-buttons');
             return t.cards('id', 'desc')
@@ -42,15 +35,50 @@ window.TrelloPowerUp.initialize(
                 });
         },
         'card-badges' : function(t, opts) {
-            console.log('card-badges');
             return t.get('card', 'shared', opts.context.card)
-                .then(function(customFields) {
-                // return [{
-                //     icon: estimate ? GREY_ROCKET_ICON : WHITE_ROCKET_ICON,
-                //     text: estimate || 'No Estimate!',
-                //     color: estimate ? null : 'red',
-                // }];  
-                console.log(customFields);
+                .then(function(data) {
+                
+                if(data != null) {
+                    var result = JSON.parse(data[0].value);
+                    var selectedValue = result[opts.context.card + '-selected'];
+                    var customFields = result[opts.context.card];
+                    var values = [];
+                    $.each(customFields, function(idx, customField){
+                        switch(customField.type) {
+                            case "list":
+                                $.each(customfield.options, function(j, option) {
+                                    if(option.id == selectedValue[customfield.id]) {
+                                        values.push({
+                                            icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                            text: option.value,
+                                            color: option.color
+                                        });
+                                    }
+                                });
+                                break;
+                            case "check":
+                                if(selectedValue[customfield.id] == true) {
+                                    values.push({
+                                        icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                        text: customfield.name,
+                                        color: "green"
+                                    });
+                                }
+                                break;
+                            default:
+                                if(selectedValue[customfield.id] != "") {
+                                    values.push({
+                                        icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                        text: customfield.name,
+                                        color: "green"
+                                    });
+                                }
+                                break;
+                        }
+                    });
+
+                    return values;  
+                }
             });
             
         },
