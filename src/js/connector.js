@@ -35,7 +35,7 @@ window.TrelloPowerUp.initialize(
                 });
         },
         'card-badges' : function(t, opts) {
-            return t.cards('id', 'name', 'pluginData')
+            return t.cards('all')
                     .then(function(data){
                         console.log(data);
                     });
