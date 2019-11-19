@@ -35,10 +35,19 @@ window.TrelloPowerUp.initialize(
                 });
         },
         'card-badges' : function(t, opts) {
-            return t.card('id')
-                    .then(function(data){
-                        console.log(data);
-                    });
+            // return t.card('id')
+            //         .then(function(data){
+            //             return t.get('card', 'shared', data)
+            //                     .then(function(customFields) {
+            //                     // return [{
+            //                     //     icon: estimate ? GREY_ROCKET_ICON : WHITE_ROCKET_ICON,
+            //                     //     text: estimate || 'No Estimate!',
+            //                     //     color: estimate ? null : 'red',
+            //                     // }];  
+            //                     console.log(customFields);
+            //         });
+            // });
+            console.log(opts);
         },
         'card-back-section': function(t, options){
             console.log(options);
