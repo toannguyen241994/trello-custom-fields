@@ -48,7 +48,6 @@ window.TrelloPowerUp.initialize(
                                 case "list":
                                     $.each(customField.options, function(j, option) {
                                         if(option.id == selectedValue[customField.id]) {
-                                            console.log(option);
                                             values.push({
                                                 icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
                                                 text: option.value,
@@ -60,21 +59,19 @@ window.TrelloPowerUp.initialize(
                                     });
                                     break;
                                 case "check":
-                                    console.log("check");
                                     if(selectedValue[customField.id] == true) {
                                         values.push({
                                             icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
-                                            text: customfield.name,
+                                            text: customField.name,
                                             color: "green"
                                         });
                                     }
                                     break;
                                 default:
-                                console.log("yte");
                                     if(selectedValue[customField.id] != "") {
                                         values.push({
                                             icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
-                                            text: customfield.name,
+                                            text: customField.name,
                                             color: "green"
                                         });
                                     }
