@@ -11,7 +11,7 @@ window.TrelloPowerUp.initialize(
                 .then(function (data) {
                     $.each(data, function(i, card) {
                         var desc = card.desc;
-                        t.get('card', 'shared', opts.context.card).then(function(customFields){ console.logcustomFields });
+                        t.get('card', 'shared', opts.context.card).then(function(customFields){ console.log(customFields); });
                         if (desc.indexOf('§FIELDS=') > -1) {
                             var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
                             var customFields = JSON.parse(value);
