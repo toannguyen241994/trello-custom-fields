@@ -38,48 +38,46 @@ window.TrelloPowerUp.initialize(
                 .then(function(data) {
                 
                 if(data != null) {
-                    console.log(data);
-                    var result = JSON.parse(data[0].value);
-                    console.log('tẽst');
-                    console.log(result);
-                    var selectedValue = result[opts.context.card + '-selected'];
-                    var customFields = result[opts.context.card];
-                    var values = [];
-                    $.each(customFields, function(idx, customField){
-                        switch(customField.type) {
-                            case "list":
-                                $.each(customfield.options, function(j, option) {
-                                    if(option.id == selectedValue[customfield.id]) {
+                    var selectedValue = data[opts.context.card + '-selected'];
+                    var customFields = data[opts.context.card];
+                    if(customFields != null && customFields.length > 0 && selectedValue != null) {
+                        var values = [];
+                        $.each(customFields, function(idx, customField){
+                            switch(customField.type) {
+                                case "list":
+                                    $.each(customfield.options, function(j, option) {
+                                        if(option.id == selectedValue[customfield.id]) {
+                                            values.push({
+                                                icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                                text: option.value,
+                                                color: option.color
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case "check":
+                                    if(selectedValue[customfield.id] == true) {
                                         values.push({
                                             icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
-                                            text: option.value,
-                                            color: option.color
+                                            text: customfield.name,
+                                            color: "green"
                                         });
                                     }
-                                });
-                                break;
-                            case "check":
-                                if(selectedValue[customfield.id] == true) {
-                                    values.push({
-                                        icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
-                                        text: customfield.name,
-                                        color: "green"
-                                    });
-                                }
-                                break;
-                            default:
-                                if(selectedValue[customfield.id] != "") {
-                                    values.push({
-                                        icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
-                                        text: customfield.name,
-                                        color: "green"
-                                    });
-                                }
-                                break;
-                        }
-                    });
-
-                    return values;  
+                                    break;
+                                default:
+                                    if(selectedValue[customfield.id] != "") {
+                                        values.push({
+                                            icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                            text: customfield.name,
+                                            color: "green"
+                                        });
+                                    }
+                                    break;
+                            }
+                        });
+    
+                        return values;  
+                    }
                 }
             });
             
