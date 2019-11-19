@@ -251,7 +251,7 @@
                             var value = $(this).val();
                             var id =  $(this).attr("id");
                             var text = $(this).children('option:selected').text();
-                            
+                            var customfieldid =customfield.id;
                             $('#sp' + customfield.id).text(text);
 
                             var values = {};
@@ -260,7 +260,7 @@
                                 switch(field.type) {
                                     case 'list':
                                         selectValue = $('#cus' + field.id).val();
-                                        if(field.id == customfield.id) {
+                                        if(field.id == customfieldid) {
                                             var lastClass = $('#cus' + field.id).parent().attr('class').split(' ').pop();
                                             if($('#cus' + field.id).parent().hasClass('field-color')) {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + field.color);
