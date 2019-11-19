@@ -48,15 +48,19 @@ window.TrelloPowerUp.initialize(
                                 case "list":
                                     $.each(customfield.options, function(j, option) {
                                         if(option.id == selectedValue[customfield.id]) {
+                                            console.log(option);
                                             values.push({
                                                 icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
                                                 text: option.value,
                                                 color: option.color
                                             });
+
+                                            return false;
                                         }
                                     });
                                     break;
                                 case "check":
+                                    console.log("check");
                                     if(selectedValue[customfield.id] == true) {
                                         values.push({
                                             icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
@@ -66,6 +70,7 @@ window.TrelloPowerUp.initialize(
                                     }
                                     break;
                                 default:
+                                console.log("yte");
                                     if(selectedValue[customfield.id] != "") {
                                         values.push({
                                             icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
