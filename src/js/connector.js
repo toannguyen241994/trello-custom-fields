@@ -7,7 +7,6 @@ var KEYTOKEN = 'key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9d
 window.TrelloPowerUp.initialize(
     {
         'board-buttons': function (t, opts) {
-            console.log('board-buttons');
             return t.cards('id', 'desc')
                 .then(function (data) {
                     $.each(data, function(i, card) {
@@ -41,6 +40,7 @@ window.TrelloPowerUp.initialize(
                 if(data != null) {
                     console.log(data);
                     var result = JSON.parse(data[0].value);
+                    console.log('tẽst');
                     console.log(result);
                     var selectedValue = result[opts.context.card + '-selected'];
                     var customFields = result[opts.context.card];
