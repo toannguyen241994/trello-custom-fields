@@ -227,6 +227,7 @@
                                 html += "</select>";
                                 break;
                             case "check":
+                                console.log(selectedValue[customfield.id]);
                                 if(selectedValue[customfield.id] == true) {
                                     html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
                                 } else {
