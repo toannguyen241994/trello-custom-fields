@@ -34,7 +34,7 @@ window.TrelloPowerUp.initialize(
                 });
         },
         'card-badges' : function(t, opts) {
-            return t.get('card', 'shared', opts.context.card)
+            return t.get('card', 'shared')
                 .then(function(data) {
                 
                 if(data != null) {
