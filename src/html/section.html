@@ -227,11 +227,10 @@
                                 html += "</select>";
                                 break;
                             case "check":
-                                console.log(selectedValue[customfield.id]);
                                 if(selectedValue[customfield.id] == true) {
                                     html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
                                 } else {
-                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "false") + "'/>";
+                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;')'/>";
                                 }
                                 break;
                             default:
