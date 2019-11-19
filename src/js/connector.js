@@ -38,8 +38,12 @@ window.TrelloPowerUp.initialize(
                 .then(function(data) {
                 
                 if(data != null) {
+                    console.log(data);
+                    console.log(opts.context.card);
                     var selectedValue = data[opts.context.card + '-selected'];
                     var customFields = data[opts.context.card];
+                    console.log(customFields);
+                    console.log(selectedValue);
                     if(customFields != null && customFields.length > 0 && selectedValue != null) {
                         var values = [];
                         $.each(customFields, function(idx, customField){
