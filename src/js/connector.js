@@ -11,7 +11,7 @@ window.TrelloPowerUp.initialize(
                 .then(function (data) {
                     $.each(data, function(i, card) {
                         var desc = card.desc;
-                        
+                        t.get('card', 'shared', opts.context.card).then(function(customFields){ console.logcustomFields });
                         if (desc.indexOf('§FIELDS=') > -1) {
                             var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
                             var customFields = JSON.parse(value);
@@ -35,19 +35,17 @@ window.TrelloPowerUp.initialize(
                 });
         },
         'card-badges' : function(t, opts) {
-            // return t.card('id')
-            //         .then(function(data){
-            //             return t.get('card', 'shared', data)
-            //                     .then(function(customFields) {
-            //                     // return [{
-            //                     //     icon: estimate ? GREY_ROCKET_ICON : WHITE_ROCKET_ICON,
-            //                     //     text: estimate || 'No Estimate!',
-            //                     //     color: estimate ? null : 'red',
-            //                     // }];  
-            //                     console.log(customFields);
-            //         });
-            // });
             console.log(opts);
+            return t.get('card', 'shared', opts.context.card)
+                .then(function(customFields) {
+                // return [{
+                //     icon: estimate ? GREY_ROCKET_ICON : WHITE_ROCKET_ICON,
+                //     text: estimate || 'No Estimate!',
+                //     color: estimate ? null : 'red',
+                // }];  
+                console.log(customFields);
+            });
+            
         },
         'card-back-section': function(t, options){
             console.log(options);
