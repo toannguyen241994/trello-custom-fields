@@ -227,7 +227,6 @@
                                 html += "</select>";
                                 break;
                             case "check":
-                                //html += '<span class="custom-field-detail-badge custom-field-detail-checkbox-badge js-custom-field-detail-badge is-clickable"><span class="custom-field-detail-badge-checkbox-box"><span class="icon-sm icon-check custom-field-detail-badge-checkbox-icon"></span></span></span>';
                                 if(selectedValue[customfield.id]) {
                                     html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
                                 } else {
@@ -289,8 +288,6 @@
                                 values[field.id] = selectValue;
                             });
 
-                            console.log(values);
-                            
                             return t.set('card', 'shared', cardid + '-selected', values);
                         });
                     }    
