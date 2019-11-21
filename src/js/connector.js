@@ -24,7 +24,7 @@ window.TrelloPowerUp.initialize(
                                             desc: desc
                                         },
                                         success: function(e){
-                                            console.log(e);
+                                            
                                         }
                                     });
                                 });
@@ -43,7 +43,6 @@ window.TrelloPowerUp.initialize(
                     if(customFields != null && customFields.length > 0 && selectedValue != null) {
                         var values = [];
                         $.each(customFields, function(idx, customField){
-                            console.log(customField);
                             switch(customField.type) {
                                 case "list":
                                     $.each(customField.options, function(j, option) {
@@ -78,7 +77,6 @@ window.TrelloPowerUp.initialize(
                                     break;
                             }
                         });
-                        console.log(values);
                         return values;  
                     }
                 }
