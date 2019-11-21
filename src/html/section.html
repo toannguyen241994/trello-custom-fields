@@ -86,6 +86,16 @@
         min-height: 8px;
     }
 
+    .item-checkbox {
+        float: left;
+        width: 18px;
+        height: 18px;
+    }
+
+
+    .checklist-item-details-text {
+        margin-left: 5px;
+    }
 </style>
 <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
 <div class="checklist-list window-module js-checklist-list js-no-higher-edits ui-sortable">
@@ -102,6 +112,7 @@
     var fields = [];
     $( document ).ready(function(){
         var cardid = getUrlParameter('cardid');
+        var boardid = getUrlParameter('boardid');
         var key = getUrlParameter('key');
         var token = getUrlParameter('token');
         $.ajax({
@@ -120,12 +131,12 @@
                         $.each(customfield.options, function(j, option) {
                             html += '<div class="checklist-item">';
                             if(option.id == selectedValue[customfield.id]) {
-                                html += '<input type="checkbox" id="' + option.id + '" checked>';
+                                html += '<input type="checkbox" class="item-checkbox" id="' + option.id + '" checked>';
                             } else {
                                 html += '<input type="checkbox" id="' + option.id + '">';
                             }
                             html += '<div class="checklist-item-row js-checkitem-row current">';
-                            html += '<span class="checklist-item-details-text markeddown js-checkitem-name option-' + option.id + '">' + option.value + '</span>';
+                            html += '<span class="checklist-item-details-text markeddown js-checkitem-name option-' + option.id + '" data-color="' + option.color + '">' + option.value + '</span>';
                             html += '</div>';
                             html += '</div>';
                         });
@@ -135,9 +146,32 @@
 
                         $('.checklist :checkbox').change(function() {
                             var value = $(this).attr('id');
-                            console.log(value);
+                            var text = $('.option-' + value).text();
+                            var color = $(this).data('color');
+                            console.log(text);
                             if (this.checked) {
-                                // the checkbox is now checked 
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'https://api.trello.com/1/labels?key=' + key + '&token=' + token,
+                                    data: {
+                                        name: text,
+                                        color: color,
+                                        idBoard: boardid
+                                    },
+                                    success: function(l) {
+                                        console.log(l);
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: 'https://api.trello.com/1/cards/' + cardid + '/idLabels?key=' + key + '&token=' + token,
+                                            data: {
+                                                value: l.id
+                                            },
+                                            success: function(r) {
+                                                console.log(r);
+                                            }
+                                        });
+                                    }
+                                });
                             } else {
                                 // the checkbox is now no longer checked
                             }
