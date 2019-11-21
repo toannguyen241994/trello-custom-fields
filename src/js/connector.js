@@ -84,9 +84,8 @@ window.TrelloPowerUp.initialize(
             
         },
         'card-back-section': function(t, options){
-            console.log(options);
           return {
-            title: 'Custom fields',    
+            title: 'Custom Fields',    
             icon: GRAY_ICON, // Must be a gray icon, colored icons not allowed.    
             content: {
                 type: 'iframe',
