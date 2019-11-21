@@ -7,136 +7,44 @@
         font-weight: 400;
     }
 
-    .u-gutter {
-        margin-left: 0px;
-    }
-
-    .u-clearfix:after {
+    .window-module {
         clear: both;
-        content: "";
-        display: table;
-    }
-
-    .custom-field-detail-badges-grid {
-        display: grid;
-        grid-gap: 16px;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    .custom-field-detail-item {
-        grid-column-end: span 2;
-        height: 64px;
-        max-width: 100%;
-    }
-
-    .card-detail-item-header {
-        color: #5e6c84;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: .04em;
-        line-height: 16px;
-        margin-top: 16px;
-        text-transform: uppercase;
-        display: block;
-        line-height: 20px;
-        margin: 0 8px 4px 0;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-
-    .list-detail-badge {
-        min-width: 36px;
+        margin-bottom: 24px;
         position: relative;
     }
 
-    .custom-field-detail-badge {
-        background-color: rgba(9,30,66,.04);
-        box-shadow: none;
-        border: none;
-        border-radius: 3px;
-        display: block;
-        height: 23px;
-        line-height: 23px;
-        max-width: 100%;
-        overflow: hidden;
-        padding: 6px 12px;
-        text-decoration: none;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        transition-property: background-color,border-color,box-shadow;
-        transition-duration: 85ms;
-        transition-timing-function: ease;
+    .checklist {
+        margin-bottom: 24px;
     }
 
-    .list-detail-badge-value {
-        display: flex;
-        justify-content: space-between;
+    .window-module-title-no-divider {
+        border-bottom: none;
+    }
+    .window-module-title {
+        border-bottom: 1px solid rgba(9,30,66,.13);
+        padding: 8px 0;
+        position: relative;
+        margin: 0 0 4px 40px;
     }
 
-    .list-detail-badge select {
-        border: none;
-        cursor: pointer;
-        height: 32px;
-        left: 0;
-        margin: 0;
-        opacity: 0;
+    .window-module-title-icon.icon-checklist, .window-module-title-icon.toggle-checklist-button {
+        top: 8px;
+    }
+    .window-module-title-icon {
+        left: -40px;
         position: absolute;
-        top: 0;
-        z-index: 2;
-        width: 100%;
-    }
-
-    option {
-        font-weight: normal;
-        display: block;
-        white-space: pre;
-        min-height: 1.2em;
-        padding: 0px 2px 1px;
-    }
-
-    .custom-field-detail-checkbox-badge.is-clickable {
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .custom-field-detail-checkbox-badge.custom-field-detail-badge, .custom-field-detail-checkbox-badge.custom-field-detail-badge:active, .custom-field-detail-checkbox-badge.custom-field-detail-badge:hover {
-        background: none;
-    }
-    .custom-field-detail-checkbox-badge {
-        display: inline-flex;
-        align-items: center;
-        padding-left: 0;
-    }
-
-    .custom-field-detail-checkbox-badge .custom-field-detail-badge-checkbox-box {
-        border-radius: 2px;
-        box-sizing: border-box;
-        line-height: 18px;
-        overflow: hidden;
-        text-indent: 100%;
-        height: 18px;
-        width: 18px;
-        white-space: nowrap;
-        background-color: #fafbfc;
-        box-shadow: inset 0 0 0 2px #dfe1e6;
-        display: flex;
-    }
-
-    .custom-field-detail-checkbox-badge .custom-field-detail-badge-checkbox-box .custom-field-detail-badge-checkbox-icon {
-        opacity: 0;
-        height: 18px;
-        line-height: 18px;
-        width: 18px;
+        top: 2px;
     }
     .icon-lg, .icon-md, .icon-sm {
         color: #42526e;
     }
-    .icon-sm {
-        height: 20px;
-        font-size: 16px;
-        line-height: 20px;
-        width: 20px;
+    .icon-lg, .icon-md {
+        height: 32px;
+        line-height: 32px;
+        width: 32px;
+    }
+    .icon-lg {
+        font-size: 24px;
     }
     .icon-lg, .icon-md, .icon-sm {
         -webkit-font-smoothing: antialiased;
@@ -151,38 +59,74 @@
         vertical-align: bottom;
     }
 
-    .icon-check:before {
-        content: "\E913";
+    .checklist-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: row wrap;
     }
 
-    .icon-dropdown-options:before {
-        content: "\E922";
+    .window-module-title h3 {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        min-height: 18px;
+        min-width: 40px;
+    }
+    h3, h4, h5, h6 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        margin: 0 0 8px;
     }
 
-    .field-color {
-        color: #fff!important;
+    .checklist-items-list {
+        min-height: 8px;
     }
 
-    .field-color-yellow {
-        background-color:#f2d600;
+    .checklist-item-checkbox {
+        border-radius: 2px;
+        box-sizing: border-box;
+        line-height: 18px;
+        overflow: hidden;
+        text-indent: 100%;
+        height: 18px;
+        width: 18px;
+        white-space: nowrap;
+        background-color: #fafbfc;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        position: absolute;
+        left: 0;
+        margin: 6px;
+        text-align: center;
+        top: 0;
     }
 
-    .field-color-orage {
-        background-color: #ff9f1a;
+    .checklist-item-details-text {
+        min-height: 20px;
+        margin-bottom: 0;
+        align-self: center;
     }
-
-    .field-color-green {
-        background-color: #61bd4f;
+    .markeddown {
+        word-break: break-word;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
-
-    .field-color-red {
-        background-color: #eb5a46;
+    .editable .current {
+        cursor: pointer;
     }
-
+    .checklist-item-details {
+        word-break: break-word;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        padding-right: 32px;
+    }
 </style>
 <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
-<div class="u-gutter">
-    <div class="u-clearfix js-custom-field-detail-badges custom-field-detail-badges">
+<div class="checklist-list window-module js-checklist-list js-no-higher-edits ui-sortable">
+    <div class="checklist">
         <div class="custom-field-detail-badges-grid">
 
         </div>
@@ -206,90 +150,55 @@
                 $.each(result[cardid], function(i, customfield){    
                     var html = '';
                     if(customfield.name != null) {
-                        html += '<div class="custom-field-detail-item">';
-                        html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-sm icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
-                        
-                        switch(customfield.type) {
-                            case "list":
-                                html += '<div class="list-detail-badge custom-field-detail-badge is-clickable js-custom-field-detail-badge" title="">';
-                                html += '<span class="list-detail-badge-value js-custom-field-list-value" id="sp' + customfield.id + '">-Select</span><label>' + customfield.name + '</label>';
-                                html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
-                                html += '<option value="">Select...</option>';
-                                $.each(customfield.options, function(j, option) {
-                                    if(option.id == selectedValue[customfield.id]) {
-                                        html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
-                                        html = html.replace('-Select</span>', option.value + '</span>');
-                                        html = html.replace('js-custom-field-detail-badge', 'js-custom-field-detail-badge field-color field-color-' + option.color);
-                                    } else {
-                                        html += '<option value="' + option.id + '">' + option.value + '</option>';
-                                    }
-                                });
-                                html += "</select>";
-                                break;
-                            case "check":
-                                if(selectedValue[customfield.id] == true) {
-                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
-                                } else {
-                                    html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;')'/>";
-                                }
-                                break;
-                            default:
-                                if(selectedValue[customfield.id] != "") {
-                                    html += "<input id='cus" + customfield.id + "' type='text' value='" + selectedValue[customfield.id] + "'/>";    
-                                } else {
-                                    html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
-                                }
-                                
-                                break;
-                        }
+                        html += '<div class="window-module-title window-module-title-no-divider u-clearfix ed grab">';
+                        html += '<span class="window-module-title-icon icon-lg icon-checklist"></span>';
+                        html += '<div class="editable non-empty checklist-title"><h3 class="current hide-on-edit" dir="auto">' + customfield.name + '</h3></div>';
+                        html += '<div class="checklist-items-list js-checklist-items-list js-no-higher-edits ui-sortable">';
+                        $.each(customfield.options, function(j, option) {
+                            html += '<div class="checklist-item">';
+                            html += '<div class="checklist-item-checkbox enabled js-toggle-checklist-item">';
+                            if(option.id == selectedValue[customfield.id]) {
+                                html += '<input type="checkbox" id="' + option.id + '" checked>';
+                            } else {
+                                html += '<input type="checkbox" id="' + option.id + '">';
+                            }
+                            html += '<div class="checklist-item-details non-empty js-checkitem editable">';
+                            html += '<div class="checklist-item-row js-checkitem-row current">';
+                            html += '<span class="checklist-item-details-text markeddown js-checkitem-name option-' + option.id + '">' + option.value + '</span>';
+                            html += '</div></div>';
+                            html += '</div></div>';
+                        });
                         html += '</div></div>';
 
-                        $('.custom-field-detail-badges-grid').append(html);
+                        $('.checklist').append(html);
 
-                        $('#cus' + customfield.id).on('change', function(){
-                            var value = $(this).val();
-                            var id =  $(this).attr("id");
-                            var text = $(this).children('option:selected').text();
-                            var customfieldid =customfield.id;
-                            $('#sp' + customfield.id).text(text);
-
-                            var values = {};
-                            $.each(fields, function(idx, field){
-                                var selectValue = '';
-                                switch(field.type) {
-                                    case 'list':
-                                        selectValue = $('#cus' + field.id).val();
-                                        if(field.id == customfieldid) {
-                                            var opt = {};
-                                            $.each(field.options, function(i, item){
-                                                if(item.id == value) {
-                                                    opt = item;
-                                                    return false;
-                                                }
-                                            });
-                                            var lastClass = $('#cus' + field.id).parent().attr('class').split(' ').pop();
-                                            if($('#cus' + field.id).parent().hasClass('field-color')) {
-                                                $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + opt.color);
-                                            } else if(selectValue != 'Select...'){
-                                                $('#cus' + field.id).parent().addClass('field-color').addClass('field-color-' + opt.color);
-                                            } else {
-                                                $('#cus' + field.id).parent().removeClass(lastClass).removeClass('field-color');
-                                            }
-                                        }
-                                        break;
-                                    case 'check':
-                                        selectValue = $('#cus' + field.id).is(':checked');
-                                        break;
-                                    default:
-                                        selectValue = $('#cus' + field.id).val();
-                                        break;
-                                }
-                                
-                                values[field.id] = selectValue;
-                            });
-
-                            return t.set('card', 'shared', cardid + '-selected', values);
+                        $('#checklist :checkbox').change(function() {
+                            var value = $(this).attr('id');
+                            console.log(value);
+                            if (this.checked) {
+                                // the checkbox is now checked 
+                            } else {
+                                // the checkbox is now no longer checked
+                            }
                         });
+
+                        // $('#cus' + customfield.id).on('click', function(){
+                        //     var value = $(this).val();
+                        //     var id =  $(this).attr("id");
+                        //     var text = $(this).children('option:selected').text();
+                        //     var customfieldid =customfield.id;
+                        //     $('#sp' + customfield.id).text(text);
+
+                        //     var values = {};
+                        //     $.each(fields, function(idx, field){
+                        //         var selectValue = '';
+                        //         selectValue = $('#cus' + field.id).is(':checked');
+                                
+                        //         values[field.id] = selectValue;
+                        //     });
+
+                        //     return t.set('card', 'shared', cardid + '-selected', values);
+                        // });
                     }    
                 });
             }
