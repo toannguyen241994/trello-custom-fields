@@ -133,10 +133,10 @@
                             if(option.id == selectedValue[customfield.id]) {
                                 html += '<input type="checkbox" class="item-checkbox" id="' + option.id + '" checked>';
                             } else {
-                                html += '<input type="checkbox" id="' + option.id + '">';
+                                html += '<input type="checkbox" class="item-checkbox" id="' + option.id + '">';
                             }
                             html += '<div class="checklist-item-row js-checkitem-row current">';
-                            html += '<span class="checklist-item-details-text markeddown js-checkitem-name option-' + option.id + '" data-color="' + option.color + '">' + option.value + '</span>';
+                            html += '<span class="checklist-item-details-text markeddown js-checkitem-name option-' + option.id + '" data-color="' + option.color + '">' + customfield.name + ': ' + option.value + '</span>';
                             html += '</div>';
                             html += '</div>';
                         });
@@ -147,9 +147,10 @@
                         $('.checklist :checkbox').change(function() {
                             var value = $(this).attr('id');
                             var text = $('.option-' + value).text();
-                            var color = $(this).data('color');
-                            console.log(text);
-                            if (this.checked) {
+                            var color = $('.option-' + value).data('color');
+                            
+                            if ($(this).is(':checked')) {
+                                console.log(text);
                                 $.ajax({
                                     type: 'POST',
                                     url: 'https://api.trello.com/1/labels?key=' + key + '&token=' + token,
@@ -159,7 +160,7 @@
                                         idBoard: boardid
                                     },
                                     success: function(l) {
-                                        console.log(l);
+                                        
                                         $.ajax({
                                             type: 'POST',
                                             url: 'https://api.trello.com/1/cards/' + cardid + '/idLabels?key=' + key + '&token=' + token,
