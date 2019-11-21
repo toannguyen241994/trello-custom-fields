@@ -86,43 +86,6 @@
         min-height: 8px;
     }
 
-    .checklist-item-checkbox {
-        border-radius: 2px;
-        box-sizing: border-box;
-        line-height: 18px;
-        overflow: hidden;
-        text-indent: 100%;
-        height: 18px;
-        width: 18px;
-        white-space: nowrap;
-        background-color: #fafbfc;
-        box-shadow: inset 0 0 0 2px #dfe1e6;
-        position: absolute;
-        left: 0;
-        margin: 6px;
-        text-align: center;
-        top: 0;
-    }
-
-    .checklist-item-details-text {
-        min-height: 20px;
-        margin-bottom: 0;
-        align-self: center;
-    }
-    .markeddown {
-        word-break: break-word;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    .editable .current {
-        cursor: pointer;
-    }
-    .checklist-item-details {
-        word-break: break-word;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        padding-right: 32px;
-    }
 </style>
 <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
 <div class="checklist-list window-module js-checklist-list js-no-higher-edits ui-sortable">
@@ -156,17 +119,15 @@
                         html += '<div class="checklist-items-list js-checklist-items-list js-no-higher-edits ui-sortable">';
                         $.each(customfield.options, function(j, option) {
                             html += '<div class="checklist-item">';
-                            html += '<div class="checklist-item-checkbox enabled js-toggle-checklist-item">';
                             if(option.id == selectedValue[customfield.id]) {
                                 html += '<input type="checkbox" id="' + option.id + '" checked>';
                             } else {
                                 html += '<input type="checkbox" id="' + option.id + '">';
                             }
-                            html += '<div class="checklist-item-details non-empty js-checkitem editable">';
                             html += '<div class="checklist-item-row js-checkitem-row current">';
                             html += '<span class="checklist-item-details-text markeddown js-checkitem-name option-' + option.id + '">' + option.value + '</span>';
-                            html += '</div></div>';
-                            html += '</div></div>';
+                            html += '</div>';
+                            html += '</div>';
                         });
                         html += '</div></div>';
 
