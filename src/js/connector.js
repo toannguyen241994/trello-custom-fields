@@ -49,7 +49,7 @@ window.TrelloPowerUp.initialize(
                                         if(option.id == selectedValue[customField.id]) {
                                             values.push({
                                                 icon: './tick-inside-circle.9d454d9d.png',
-                                                text: customField.name + ': ' + option.value,
+                                                text: customField.name + ': ' + option.value.text,
                                                 color: option.color
                                             });
 

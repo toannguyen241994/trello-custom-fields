@@ -179,6 +179,11 @@
         background-color: #eb5a46;
     }
 
+    .field-color-grey {
+        background-color: lightgrey;
+        color: #000;
+    }
+
     .icon-list {
         background: url('../icon/list.png');
     }
@@ -221,11 +226,11 @@
                                 html += '<option value="">-Select</option>';
                                 $.each(customfield.options, function(j, option) {
                                     if(selectedValue != null && option.id == selectedValue[customfield.id]) {
-                                        html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
-                                        html = html.replace('-Select</span>', option.value + '</span>');
+                                        html += '<option value="' + option.id + '" selected>' + option.value.text + '</option>';
+                                        html = html.replace('-Select</span>', option.value.text + '</span>');
                                         html = html.replace('js-custom-field-detail-badge', 'js-custom-field-detail-badge field-color field-color-' + option.color);
                                     } else {
-                                        html += '<option value="' + option.id + '">' + option.value + '</option>';
+                                        html += '<option value="' + option.id + '">' + option.value.text + '</option>';
                                     }
                                 });
                                 html += "</select>";
