@@ -6,10 +6,6 @@ var KEYTOKEN = 'key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9d
 
 window.TrelloPowerUp.initialize(
     {
-        'show-authorization': function(t, options){
-            console.log(options);
-            console.log(t);
-          },
         'board-buttons': function (t, opts) {
             return t.cards('id', 'desc')
                     .then(function (data) {
