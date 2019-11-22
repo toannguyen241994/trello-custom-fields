@@ -46,9 +46,9 @@ window.TrelloPowerUp.initialize(
                             switch(customField.type) {
                                 case "list":
                                     $.each(customField.options, function(j, option) {
-                                        if(option.id == selectedValue[customField.id]) {
+                                        if(selectedValue != null && option.id == selectedValue[customField.id]) {
                                             values.push({
-                                                icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                                icon: '',
                                                 text: option.value,
                                                 color: option.color
                                             });
@@ -58,18 +58,18 @@ window.TrelloPowerUp.initialize(
                                     });
                                     break;
                                 case "check":
-                                    if(selectedValue[customField.id] == true) {
+                                    if(selectedValue != null && selectedValue[customField.id] == true) {
                                         values.push({
-                                            icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                            icon: '',
                                             text: customField.name,
                                             color: "green"
                                         });
                                     }
                                     break;
                                 default:
-                                    if(selectedValue[customField.id] != "") {
+                                    if(selectedValue != null && selectedValue[customField.id] != "") {
                                         values.push({
-                                            icon: 'https://cdn.glitch.com/c69415fd-f70e-4e03-b43b-98b8960cd616%2Frocket-ship-grey.png?1496162964717',
+                                            icon: '',
                                             text: customField.name,
                                             color: "green"
                                         });

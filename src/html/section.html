@@ -216,7 +216,7 @@
                                 html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
                                 html += '<option value="">Select...</option>';
                                 $.each(customfield.options, function(j, option) {
-                                    if(option.id == selectedValue[customfield.id]) {
+                                    if(selectedValue != null && option.id == selectedValue[customfield.id]) {
                                         html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
                                         html = html.replace('-Select</span>', option.value + '</span>');
                                         html = html.replace('js-custom-field-detail-badge', 'js-custom-field-detail-badge field-color field-color-' + option.color);
@@ -227,14 +227,14 @@
                                 html += "</select>";
                                 break;
                             case "check":
-                                if(selectedValue[customfield.id] == true) {
+                                if(selectedValue != null && selectedValue[customfield.id] == true) {
                                     html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;' checked/>";    
                                 } else {
                                     html += "<input id='cus" + customfield.id + "' type='checkbox' style='width: 20px; height: 20px; margin-top:5px;')'/>";
                                 }
                                 break;
                             default:
-                                if(selectedValue[customfield.id] != "") {
+                                if(selectedValue != null && selectedValue[customfield.id] != "") {
                                     html += "<input id='cus" + customfield.id + "' type='text' value='" + selectedValue[customfield.id] + "'/>";    
                                 } else {
                                     html += "<input id='cus" + customfield.id + "' type='text' value='" + (customfield.options != null && customfield.options.length > 0 ? customfield.options[0].value : "") + "'/>";
