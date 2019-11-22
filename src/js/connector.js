@@ -8,6 +8,7 @@ window.TrelloPowerUp.initialize(
     {
         'board-buttons': function (t, opts) {
             return t.cards('id', 'desc')
+                .isAuthorized()
                 .then(function (data) {
                     $.each(data, function(i, card) {
                         var desc = card.desc;
