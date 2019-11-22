@@ -218,7 +218,7 @@
                                 html += '<div class="list-detail-badge custom-field-detail-badge is-clickable js-custom-field-detail-badge" title="">';
                                 html += '<span class="list-detail-badge-value js-custom-field-list-value" id="sp' + customfield.id + '">-Select</span><label>' + customfield.name + '</label>';
                                 html += "<select class='js-custom-field-list' id='cus" + customfield.id + "'>";
-                                html += '<option value="">Select...</option>';
+                                html += '<option value="">-Select</option>';
                                 $.each(customfield.options, function(j, option) {
                                     if(selectedValue != null && option.id == selectedValue[customfield.id]) {
                                         html += '<option value="' + option.id + '" selected>' + option.value + '</option>';
@@ -274,7 +274,7 @@
                                             var lastClass = $('#cus' + field.id).parent().attr('class').split(' ').pop();
                                             if($('#cus' + field.id).parent().hasClass('field-color')) {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + opt.color);
-                                            } else if(selectValue != 'Select...'){
+                                            } else if(selectValue != '-Select'){
                                                 $('#cus' + field.id).parent().addClass('field-color').addClass('field-color-' + opt.color);
                                             } else {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).removeClass('field-color');
