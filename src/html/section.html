@@ -178,6 +178,10 @@
     .field-color-red {
         background-color: #eb5a46;
     }
+
+    .icon-list {
+        background: url('../icon/list.png');
+    }
   
   </style>
   <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
@@ -207,7 +211,7 @@
                     var html = '';
                     if(customfield.name != null) {
                         html += '<div class="custom-field-detail-item">';
-                        html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-sm icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
+                        html += '<h3 class="card-detail-item-header" title="' + customfield.name + '"><span class="icon-list icon-dropdown-options mod-quiet"></span>' + customfield.name + '</h3>';
                         
                         switch(customfield.type) {
                             case "list":
