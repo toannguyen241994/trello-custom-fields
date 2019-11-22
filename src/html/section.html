@@ -276,7 +276,7 @@
                                             console.log(selectValue);
                                             if($('#cus' + field.id).parent().hasClass('field-color')) {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + opt.color);
-                                            } else if(selectValue != ''){
+                                            } else if(selectValue != null && selectValue != ''){
                                                 $('#cus' + field.id).parent().addClass('field-color').addClass('field-color-' + opt.color);
                                             } else {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).removeClass('field-color');

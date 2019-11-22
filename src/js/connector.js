@@ -90,7 +90,7 @@ window.TrelloPowerUp.initialize(
             content: {
                 type: 'iframe',
                 url: t.signUrl('./section.html?cardid=' + options.context.card + '&boardid=' + options.context.board + '&' + KEYTOKEN),
-                height: 500 // Max height is 500
+                height: 200 // Max height is 500
               }
           };
         }
