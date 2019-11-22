@@ -272,6 +272,8 @@
                                                 }
                                             });
                                             var lastClass = $('#cus' + field.id).parent().attr('class').split(' ').pop();
+                                            console.log(lastClass);
+                                            console.log(selectValue);
                                             if($('#cus' + field.id).parent().hasClass('field-color')) {
                                                 $('#cus' + field.id).parent().removeClass(lastClass).addClass('field-color-' + opt.color);
                                             } else if(selectValue != '-Select'){
