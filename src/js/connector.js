@@ -48,7 +48,7 @@ window.TrelloPowerUp.initialize(
                                     $.each(customField.options, function(j, option) {
                                         if(option.id == selectedValue[customField.id]) {
                                             values.push({
-                                                icon: './setting.png',
+                                                icon: './settings.e55e9285.png',
                                                 text: option.value,
                                                 color: option.color
                                             });
