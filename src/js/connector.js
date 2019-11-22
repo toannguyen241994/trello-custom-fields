@@ -7,32 +7,37 @@ var KEYTOKEN = 'key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9d
 window.TrelloPowerUp.initialize(
     {
         'board-buttons': function (t, opts) {
-            return t.cards('id', 'desc')
-                .isAuthorized()
-                .then(function (data) {
-                    $.each(data, function(i, card) {
-                        var desc = card.desc;
-                        if (desc.indexOf('§FIELDS=') > -1) {
-                            var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
-                            var customFields = JSON.parse(value);
-                            return t.set(card.id, 'shared', card.id, customFields)
-                                .then(function(){
-                                    desc = desc.substring(0, desc.indexOf('§FIELDS='));
-                                    $.ajax({
-                                        url: 'https://api.trello.com/1/cards/' + card.id + '?' + KEYTOKEN,
-                                        type: 'PUT',
-                                        data: {
-                                            desc: desc
-                                        },
-                                        success: function(e){
-                                            
-                                        }
-                                    });
-                                });
-                        }
+            console.log(opts);
+            return t.getRestApi()
+                    .isAuthorized()
+                    .then(function(isAuthorized){
+                        console.log(isAuthorized);
+                        return t.cards('id', 'desc')
+                        .then(function (data) {
+                            $.each(data, function(i, card) {
+                                var desc = card.desc;
+                                if (desc.indexOf('§FIELDS=') > -1) {
+                                    var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
+                                    var customFields = JSON.parse(value);
+                                    return t.set(card.id, 'shared', card.id, customFields)
+                                        .then(function(){
+                                            desc = desc.substring(0, desc.indexOf('§FIELDS='));
+                                            $.ajax({
+                                                url: 'https://api.trello.com/1/cards/' + card.id + '?' + KEYTOKEN,
+                                                type: 'PUT',
+                                                data: {
+                                                    desc: desc
+                                                },
+                                                success: function(e){
+                                                    
+                                                }
+                                            });
+                                        });
+                                }
+                            });
+                            
+                        });
                     });
-                    
-                });
         },
         'card-badges' : function(t, opts) {
             return t.get('card', 'shared')
