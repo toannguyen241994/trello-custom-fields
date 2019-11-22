@@ -48,7 +48,7 @@ window.TrelloPowerUp.initialize(
                                     $.each(customField.options, function(j, option) {
                                         if(option.id == selectedValue[customField.id]) {
                                             values.push({
-                                                icon: './list.a9854ebe.png',
+                                                icon: './tick-inside-circle.9d454d9d.png',
                                                 text: customField.name + ': ' + option.value,
                                                 color: option.color
                                             });
@@ -60,7 +60,7 @@ window.TrelloPowerUp.initialize(
                                 case "check":
                                     if(selectedValue[customField.id] == true) {
                                         values.push({
-                                            icon: './list.a9854ebe.png',
+                                            icon: './tick-inside-circle.9d454d9d.png',
                                             text: customField.name,
                                             color: "green"
                                         });
@@ -69,7 +69,7 @@ window.TrelloPowerUp.initialize(
                                 default:
                                     if(selectedValue[customField.id] != "") {
                                         values.push({
-                                            icon: './list.a9854ebe.png',
+                                            icon: './tick-inside-circle.9d454d9d.png',
                                             text: customField.name,
                                             color: "green"
                                         });
