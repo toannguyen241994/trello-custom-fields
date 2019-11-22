@@ -94,4 +94,7 @@ window.TrelloPowerUp.initialize(
               }
           };
         }
+    }, {
+        appKey: 'cc57856e5af7a9464cdd18d4392623c2',
+        appName: 'umbrella-custom-field'
     });
