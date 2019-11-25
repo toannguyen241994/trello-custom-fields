@@ -11,6 +11,27 @@ window.TrelloPowerUp.initialize(
                     .then(function (data) {
                         $.each(data, function(i, card) {
                             var desc = card.desc;
+                            if (desc.indexOf('§FIELD_SELECTED=') > -1) {
+                                var selectedValue = desc.substring(desc.indexOf('§FIELD_SELECTED='), desc.length).replace('§FIELD_SELECTED=', '').replace('§', '');
+                                console.log(selectedValue);
+                                var selectedCustom = JSON.parse(selectedValue);
+                                console.log(selectedCustom);
+                                return t.set(card.id, 'shared', card.id + '-selected', selectedCustom)
+                                    .then(function(){
+                                        desc = desc.substring(0, desc.indexOf('§FIELD_SELECTED='));
+                                        console.log(desc);
+                                        $.ajax({
+                                            url: 'https://api.trello.com/1/cards/' + card.id + '?' + KEYTOKEN,
+                                            type: 'PUT',
+                                            data: {
+                                                desc: desc
+                                            },
+                                            success: function(e){
+                                                
+                                            }
+                                        });
+                                    });
+                            }
                             if (desc.indexOf('§FIELDS=') > -1) {
                                 var length = desc.indexOf('§FIELD_SELECTED=') > -1 ? desc.indexOf('§FIELD_SELECTED=') : desc.length;
                                 var value = desc.substring(desc.indexOf('§FIELDS='), length).replace('§FIELDS=', '').replace('§', '');
@@ -25,27 +46,7 @@ window.TrelloPowerUp.initialize(
                                                 desc: desc
                                             },
                                             success: function(e){
-                                                // if (desc.indexOf('§FIELD_SELECTED=') > -1) {
-                                                //     var selectedValue = desc.substring(desc.indexOf('§FIELD_SELECTED='), desc.length).replace('§FIELD_SELECTED=', '').replace('§', '');
-                                                //     console.log(selectedValue);
-                                                //     var selectedCustom = JSON.parse(selectedValue);
-                                                //     console.log(selectedCustom);
-                                                //     return t.set(card.id, 'shared', card.id + '-selected', selectedCustom)
-                                                //         .then(function(){
-                                                //             desc = desc.substring(0, desc.indexOf('§FIELD_SELECTED='));
-                                                //             console.log(desc);
-                                                //             $.ajax({
-                                                //                 url: 'https://api.trello.com/1/cards/' + card.id + '?' + KEYTOKEN,
-                                                //                 type: 'PUT',
-                                                //                 data: {
-                                                //                     desc: desc
-                                                //                 },
-                                                //                 success: function(e){
-                                                                    
-                                                //                 }
-                                                //             });
-                                                //         });
-                                                // }
+                                                
                                             }
                                         });
                                     });
