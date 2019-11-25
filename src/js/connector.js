@@ -12,7 +12,8 @@ window.TrelloPowerUp.initialize(
                         $.each(data, function(i, card) {
                             var desc = card.desc;
                             if (desc.indexOf('§FIELDS=') > -1) {
-                                var value = desc.substring(desc.indexOf('§FIELDS='), desc.length).replace('§FIELDS=', '').replace('§', '');
+                                var length = desc.indexOf('§FIELD_SELECTED=') > -1 ? desc.indexOf('§FIELD_SELECTED=') : desc.length;
+                                var value = desc.substring(desc.indexOf('§FIELDS='), length).replace('§FIELDS=', '').replace('§', '');
                                 var customFields = JSON.parse(value);
                                 return t.set(card.id, 'shared', card.id, customFields)
                                     .then(function(){
