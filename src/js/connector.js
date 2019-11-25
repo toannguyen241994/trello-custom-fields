@@ -12,6 +12,7 @@ window.TrelloPowerUp.initialize(
                         $.each(data, function(i, card) {
                             var desc = card.desc;
                             if (desc.indexOf('§FIELD_SELECTED=') > -1) {
+                                console.log('' + desc.indexOf('§FIELD_SELECTED='));
                                 var selectedValue = desc.substring(desc.indexOf('§FIELD_SELECTED='), desc.length).replace('§FIELD_SELECTED=', '').replace('§', '');
                                 console.log(selectedValue);
                                 var selectedCustom = JSON.parse(selectedValue);
