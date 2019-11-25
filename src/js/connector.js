@@ -12,11 +12,12 @@ window.TrelloPowerUp.initialize(
                         $.each(data, function(i, card) {
                             var desc = card.desc;
                             if (desc.indexOf('§FIELD_SELECTED=') > -1) {
-                                var selectedValue = desc.substring(desc.indexOf('§FIELD_SELECTED='), desc.length).replace('§FIELD_SELECTED=', '').replace('§', '');
+                                var selectedValue = desc.substring(desc.indexOf('§FIELD_SELECTED='), desc.indexOf('END_SELECTED§')).replace('§FIELD_SELECTED=', '').replace('END_SELECTED§', '');
                                 var selectedCustom = JSON.parse(selectedValue);
+                                var replaceStr = '§FIELD_SELECTED=' + selectedValue + 'END_SELECTED§';
                                 return t.set(card.id, 'shared', card.id + '-selected', selectedCustom)
                                     .then(function(){
-                                        desc = desc.substring(0, desc.indexOf('§FIELD_SELECTED='));
+                                        desc = desc.replace(replaceStr, '');
                                         $.ajax({
                                             url: 'https://api.trello.com/1/cards/' + card.id + '?' + KEYTOKEN,
                                             type: 'PUT',
