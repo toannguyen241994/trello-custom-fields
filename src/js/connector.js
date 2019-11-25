@@ -14,6 +14,7 @@ window.TrelloPowerUp.initialize(
                             if (desc.indexOf('§FIELD_SELECTED=') > -1) {
                                 var selectedValue = desc.substring(desc.indexOf('§FIELD_SELECTED='), desc.indexOf('END_SELECTED§')).replace('§FIELD_SELECTED=', '').replace('END_SELECTED§', '');
                                 var selectedCustom = JSON.parse(selectedValue);
+                                console.log(selectedValue);
                                 var replaceStr = '§FIELD_SELECTED=' + selectedValue + 'END_SELECTED§';
                                 return t.set(card.id, 'shared', card.id + '-selected', selectedCustom)
                                     .then(function(){
