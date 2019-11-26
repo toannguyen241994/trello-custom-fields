@@ -86,6 +86,7 @@ window.TrelloPowerUp.initialize(
                             switch(customField.type) {
                                 case "list":
                                     $.each(customField.options, function(j, option) {
+                                        console.log(option.color);
                                         if(option.id == selectedValue[customField.id]) {
                                             values.push({
                                                 icon: './tick-inside-circle.9d454d9d.png',
