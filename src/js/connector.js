@@ -2,7 +2,7 @@
 console.log('Check card-back-section');
 
 var GRAY_ICON = 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg';
-var KEYTOKEN = 'key=cc57856e5af7a9464cdd18d4392623c2&token=fb8213d20972a81b10b9df437e19e99bfdc71bbad832493c14ab753b385e281b';
+var KEYTOKEN = 'key=51b33d44c2f01e940b6758069495d976&token=fb0ce81c114bb48215cf18a17acab23edcd53721f22aba0f4c2588df2c0f6742';
 
 window.TrelloPowerUp.initialize(
     {
